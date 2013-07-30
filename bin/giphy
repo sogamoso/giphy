@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+# Doing this so we can run the following in development (which doesn't have
+# lib/ in the path)
+#
+#   $ ./bin/giphy
+#
+$LOAD_PATH.unshift File.expand_path('../../lib/', __FILE__)
+require 'giphy'
+
+cli = Giphy::CLI.new(ARGV[0])
+cli.search
