@@ -1,5 +1,7 @@
 # Giphy
 
+[![Build Status](https://travis-ci.org/sebasoga/giphy.png?branch=master)](https://travis-ci.org/sebasoga/giphy)
+
 Because GIFs make life fun! Use [Giphy API](http://api.giphy.com) from your Ruby programs and
 command line. Check out [Giphy Labs](http://labs.giphy.com/) for inspiration. 
 
@@ -106,7 +108,7 @@ command line and opens it on your browser. Just for fun.
 *Currently only supported for Mac.*
 
 ## Supported Ruby Versions
-This library aims to support and is [tested against][travis] the following Ruby
+This library aims to support and is tested against the following Ruby
 implementations:
 
 * Ruby 1.9.3
