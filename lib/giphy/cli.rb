@@ -1,5 +1,9 @@
 module Giphy
   class CLI
+    def self.run(keyword)
+      new(keyword).search
+    end
+
     def initialize(keyword)
       @keyword = keyword
     end
@@ -18,6 +22,10 @@ module Giphy
 
     def result
       Giphy.screensaver(keyword)
+    rescue Giphy::Errors::API
+      GifNotFound.new('YyKPbc5OOTSQE')
     end
   end
+
+  GifNotFound = Struct.new(:id)
 end
