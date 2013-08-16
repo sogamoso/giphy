@@ -1,6 +1,7 @@
 # Giphy
 
 [![Build Status](https://travis-ci.org/sebasoga/giphy.png?branch=master)](https://travis-ci.org/sebasoga/giphy)
+[![Code Climate](https://codeclimate.com/github/sebasoga/giphy.png)](https://codeclimate.com/github/sebasoga/giphy)
 
 Because GIFs make life fun! Use [Giphy API](http://api.giphy.com) from your Ruby programs and
 command line. Check out [Giphy Labs](http://labs.giphy.com/) for inspiration. 
