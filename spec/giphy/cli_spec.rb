@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'launchy'
 
 describe Giphy::CLI do
   describe ".run" do
@@ -14,19 +15,34 @@ describe Giphy::CLI do
     subject { Giphy::CLI.new('horse') }
 
     context "when a gif is found" do
+      before  { Giphy.stub(screensaver: double(id: 'OoFJ7iMGUBpiE')) }
+
       it "echoes a message to the console and opens the url using Kernel#system" do
-        Giphy.stub(screensaver: double(id: 'OoFJ7iMGUBpiE'))
-        subject.should_receive(:system).
-          with("echo 'Showing the GIF on your default browser: http://giphy.com/embed/OoFJ7iMGUBpiE' && open http://giphy.com/embed/OoFJ7iMGUBpiE")
+        expect(subject).
+          to receive(:system).
+          with("echo 'Showing the GIF on your browser'")
+        subject.search
+      end
+
+      it "opens the url using Launchy" do
+        uri = URI("http://giphy.com/embed/OoFJ7iMGUBpiE")
+        expect(Launchy).to receive(:open).with(uri)
         subject.search
       end
     end
 
     context "when a Giphy::Errors:API error is raised" do
+      before { Giphy.stub(:screensaver).and_raise(Giphy::Errors::API) }
+
       it "echoes a message to the console and opens the url using Kernel#system" do
-        Giphy.stub(:screensaver).and_raise(Giphy::Errors::API)
         subject.should_receive(:system).
-          with("echo 'Showing the GIF on your default browser: http://giphy.com/embed/YyKPbc5OOTSQE' && open http://giphy.com/embed/YyKPbc5OOTSQE")
+          with("echo 'Showing the GIF on your browser'")
+        subject.search
+      end
+
+      it "opens the 404 gif url using Launchy" do
+        uri = URI("http://giphy.com/embed/YyKPbc5OOTSQE")
+        expect(Launchy).to receive(:open).with(uri)
         subject.search
       end
     end

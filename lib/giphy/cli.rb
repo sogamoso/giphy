@@ -9,7 +9,8 @@ module Giphy
     end
 
     def search
-      system "echo 'Showing the GIF on your default browser: #{url}' && open #{url}"
+      system "echo 'Showing the GIF on your browser'"
+      Launchy.open(url)
     end
 
     private

@@ -106,8 +106,6 @@ command line and opens it on your browser. Just for fun.
 
     $ giphy 'dance'
 
-*Currently only supported for Mac.*
-
 ## Supported Ruby Versions
 This library aims to support and is tested against the following Ruby
 implementations:
