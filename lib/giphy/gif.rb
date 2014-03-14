@@ -1,7 +1,7 @@
 module Giphy
   class Gif
     def self.build_batch_from(array)
-      array.map { |gif| new(gif)}
+      array.map { |gif| new(gif) }
     end
 
     def initialize(hash)
@@ -33,31 +33,31 @@ module Giphy
     end
 
     def fixed_height_image
-      @fixed_height_image ||= images['fixed_height'] ? image(images['fixed_height']) : null_image
+      @fixed_height_image ||= image(images['fixed_height'])
     end
 
     def fixed_height_still_image
-      @fixed_height_still_image ||= images['fixed_height_still'] ? image(images['fixed_height_still']) : null_image
+      @fixed_height_still_image ||= image(images['fixed_height_still'])
     end
 
     def fixed_height_downsampled_image
-      @fixed_height_downsampled_image ||= images['fixed_height_downsampled'] ? image(images['fixed_height_downsampled']) : null_image
+      @fixed_height_downsampled_image ||= image(images['fixed_height_downsampled'])
     end
 
     def fixed_width_image
-      @fixed_width_image ||= images['fixed_width'] ? image(images['fixed_width']) : null_image
+      @fixed_width_image ||= image(images['fixed_width'])
     end
 
     def fixed_width_still_image
-      @fixed_width_still_image ||= images['fixed_width_still'] ? image(images['fixed_width_still']) : null_image
+      @fixed_width_still_image ||= image(images['fixed_width_still'])
     end
 
     def fixed_width_downsampled_image
-      @fixed_width_downsampled_image ||= images['fixed_width_downsampled'] ? image(images['fixed_width_downsampled']) : null_image
+      @fixed_width_downsampled_image ||= image(images['fixed_width_downsampled'])
     end
 
     def original_image
-      @original_image ||= images['original'] ? image(images['original']) : null_image
+      @original_image ||= image(images['original'])
     end
 
     def image_original_url
@@ -73,7 +73,7 @@ module Giphy
     end
 
     def image(image_hash)
-      Giphy::Image.new(image_hash)
+      image_hash ? Giphy::Image.new(image_hash) : null_image
     end
 
     def null_image
