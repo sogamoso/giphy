@@ -1,3 +1,5 @@
+require 'launchy'
+
 module Giphy
   class CLI
     def self.run(keyword)
