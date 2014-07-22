@@ -79,7 +79,7 @@ describe Giphy::Search do
   describe "#random" do
     it "returns a new Gif from the client result" do
       client.stub(random: client_result)
-      Giphy::Gif.stub(:new).with(client_result).and_return(response)
+      Giphy::RandomGif.stub(:new).with(client_result).and_return(response)
       expect(subject.random).to eq response
     end
   end

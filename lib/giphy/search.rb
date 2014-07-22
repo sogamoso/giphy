@@ -42,7 +42,7 @@ module Giphy
 
     def random
       result = client.random
-      gif.new(result)
+      random_gif.new(result)
     end
 
     def artists
@@ -76,6 +76,10 @@ module Giphy
 
     def favorite_gif
       Giphy::FavoriteGif
+    end
+
+    def random_gif
+      Giphy::RandomGif
     end
 
     def artist

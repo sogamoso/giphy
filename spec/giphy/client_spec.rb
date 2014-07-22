@@ -51,9 +51,19 @@ describe Giphy::Client do
   end
 
   describe "#favorites" do
-    it "does a GET on the 'favorites' endpoint" do
-      Giphy::Request.stub(:get).with('/favorites', {}).and_return(api_response)
-      expect(subject.favorites).to eq response
+    context "when no username is passed to it" do
+      it "does a GET on the 'favorites' endpoint with no username" do
+        Giphy::Request.stub(:get).with('/favorites', {username: ''}).and_return(api_response)
+        expect(subject.favorites).to eq response
+      end
+    end
+
+    context "when a username is passed as an argument" do
+      it "does a GET on the 'favorites' endpoint with the username" do
+        username = 'absurdnoise'
+        Giphy::Request.stub(:get).with('/favorites', {username: username}).and_return(api_response)
+        expect(subject.favorites(username)).to eq response
+      end
     end
   end
 
