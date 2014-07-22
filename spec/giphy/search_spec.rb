@@ -62,9 +62,10 @@ describe Giphy::Search do
 
   describe "#favorites" do
     it "returns a batch of FavoriteGifs from the client result" do
-      client.stub(favorites: client_result)
+      username = 'absurdnoise'
+      client.stub(:favorites).with(username, options).and_return(client_result)
       Giphy::FavoriteGif.stub(:build_batch_from).with(client_result).and_return(response)
-      expect(subject.favorites).to eq response
+      expect(subject.favorites(username, options)).to eq response
     end
   end
 

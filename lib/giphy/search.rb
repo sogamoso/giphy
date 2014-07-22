@@ -30,8 +30,8 @@ module Giphy
       favorite_gif.new(result)
     end
 
-    def favorites
-      result = client.favorites
+    def favorites(username, options)
+      result = client.favorites(username, options)
       favorite_gif.build_batch_from(result)
     end
 
