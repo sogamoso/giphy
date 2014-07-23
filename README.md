@@ -82,6 +82,7 @@ Giphy.screensaver('surprise')
 #### Random
 ````ruby
 Giphy.random
+Giphy.random(tag: 'american psycho')
 ````
 
 #### Artists
