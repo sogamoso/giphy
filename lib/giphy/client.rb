@@ -34,8 +34,8 @@ module Giphy
       get('/screensaver', tag: tag)
     end
 
-    def random(options={})
-      get('/random', options)
+    def random(tag='')
+      get('/random', { tag: tag })
     end
 
     def artists(options={})
