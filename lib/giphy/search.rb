@@ -40,8 +40,8 @@ module Giphy
       gif.new(result)
     end
 
-    def random(options={})
-      result = client.random(options)
+    def random(tag='')
+      result = client.random(tag)
       random_gif.new(result)
     end
 
