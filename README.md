@@ -84,6 +84,12 @@ Giphy.screensaver('surprise')
 Giphy.random
 ````
 
+For getting random gifs with a specific tag:
+
+````ruby
+Giphy.random('american psycho')
+````
+
 #### Artists
 ````ruby
 Giphy.artists

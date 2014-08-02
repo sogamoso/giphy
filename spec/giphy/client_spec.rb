@@ -74,10 +74,19 @@ describe Giphy::Client do
     end
   end
 
-  describe "#ramdom" do
-    it "does a GET on the 'random' endpoint" do
-      Giphy::Request.stub(:get).with('/random', {}).and_return(api_response)
-      expect(subject.random).to eq response
+  describe "#random" do
+    context "when no tag is passed to it" do
+      it "does a GET on the 'random' endpoint with no tag" do
+        Giphy::Request.stub(:get).with('/random', {tag: ''}).and_return(api_response)
+        expect(subject.random).to eq response
+      end
+    end
+
+    context "when a tag is passed to it" do
+      it "does a GET on the 'random' endpoint with a tag" do
+        Giphy::Request.stub(:get).with('/random', {tag: 'american psycho'}).and_return(api_response)
+        expect(subject.random('american psycho')).to eq response
+      end
     end
   end
 
