@@ -78,10 +78,20 @@ describe Giphy::Search do
   end
 
   describe "#random" do
-    it "returns a new Gif from the client result" do
-      client.stub(random: client_result)
-      Giphy::RandomGif.stub(:new).with(client_result).and_return(response)
-      expect(subject.random).to eq response
+    context "when no tag is passed to it" do
+      it "returns a new Gif from the client result" do
+        client.stub(random: client_result)
+        Giphy::RandomGif.stub(:new).with(client_result).and_return(response)
+        expect(subject.random).to eq response
+      end
+    end
+
+    context "when a tag is passed to it" do
+      it "returns a new Gif from the client result" do
+        client.stub(:random).with('american psycho').and_return(client_result)
+        Giphy::RandomGif.stub(:new).with(client_result).and_return(response)
+        expect(subject.random('american psycho')).to eq response
+      end
     end
   end
 
