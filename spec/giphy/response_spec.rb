@@ -5,7 +5,7 @@ describe Giphy::Response do
     it "creates an instance and calls #data on it" do
       data = double
       response = double(data: data)
-      Giphy::Response.stub(new: response)
+      allow(Giphy::Response).to receive(:new).and_return(response)
       expect(Giphy::Response.build({})).to eq data
     end
   end
@@ -33,10 +33,7 @@ describe Giphy::Response do
       end
 
       it "raises an error and sets its message" do
-        expect{
-          subject.data
-          Giphy::Errors::API.should_receive(:new).with('403 Forbidden')
-        }.to raise_error Giphy::Errors::API
+        expect{ subject.data }.to raise_error Giphy::Errors::API
       end
     end
   end

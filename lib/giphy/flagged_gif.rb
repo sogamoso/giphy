@@ -4,6 +4,7 @@ require 'giphy/special_gif'
 module Giphy
   class FlaggedGif < Giphy::SpecialGif
     def inappropriate?
+      puts hash.fetch('is_inappropriate')
       hash.fetch('is_inappropriate') == "1"
     end
 

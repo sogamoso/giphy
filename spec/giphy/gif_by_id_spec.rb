@@ -9,18 +9,18 @@ describe Giphy::GifByID do
     let(:client)     { double(gif: gif_hash, gifs: [gif_hash, gif_hash]) }
 
     before do
-      Giphy::Client.stub(new: client)
-      Giphy::Gif.stub(:new).with(gif_hash).and_return(gif_object)
-      Giphy::Gif.stub(:build_batch_from).with([gif_hash, gif_hash]).and_return([gif_object, gif_object])
+      allow(Giphy::Client).to receive(:new).and_return(client)
+      allow(Giphy::Gif).to receive(:new).with(gif_hash).and_return(gif_object)
+      allow(Giphy::Gif).
+        to receive(:build_batch_from).
+        with([gif_hash, gif_hash]).
+        and_return([gif_object, gif_object])
     end
 
     describe "#get" do
       context "when ids size is zero" do
-        it "raises an ArgumentError and sets its error message" do
-          expect{
-            subject.get([])
-            Giphy::Errors::ArgumentError.should_receive(:new).with('wrong number of arguments (0 for 1...Infinite)')
-          }.to raise_error Giphy::Errors::ArgumentError
+        it "raises an ArgumentError" do
+          expect{ subject.get([]) }.to raise_error Giphy::Errors::ArgumentError
         end
       end
 

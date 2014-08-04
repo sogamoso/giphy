@@ -19,8 +19,8 @@ describe Giphy::FlaggedGif do
   context "when initialized with a valid hash" do
     subject { Giphy::FlaggedGif.new(valid_hash) }
 
-    its(:inappropriate?)   { should be_false }
-    its(:wrong_source?)    { should be_true }
+    its(:inappropriate?)   { should be_falsy }
+    its(:wrong_source?)    { should be_truthy }
     its(:source_corrected) { should eq "" }
   end
 

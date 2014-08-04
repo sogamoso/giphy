@@ -5,8 +5,8 @@ describe Giphy::CLI do
   describe ".run" do
     it "creates a new instance and sends 'run'" do
       instance = double
-      Giphy::CLI.stub(:new).with('keyword').and_return(instance)
-      instance.stub(search: 'shell command')
+      allow(Giphy::CLI).to receive(:new).with('keyword').and_return(instance)
+      allow(instance).to receive(:search).and_return('shell command')
       expect(Giphy::CLI.run('keyword')).to eq 'shell command'
     end
   end
@@ -15,7 +15,11 @@ describe Giphy::CLI do
     subject { Giphy::CLI.new('horse') }
 
     context "when a gif is found" do
-      before  { Giphy.stub(screensaver: double(id: 'OoFJ7iMGUBpiE')) }
+      before do
+        allow(Giphy).
+          to receive(:screensaver).
+          and_return(double(id: 'OoFJ7iMGUBpiE'))
+      end
 
       it "echoes a message to the console and opens the url using Kernel#system" do
         expect(subject).
@@ -32,10 +36,10 @@ describe Giphy::CLI do
     end
 
     context "when a Giphy::Errors:API error is raised" do
-      before { Giphy.stub(:screensaver).and_raise(Giphy::Errors::API) }
+      before { allow(Giphy).to receive(:screensaver).and_raise(Giphy::Errors::API) }
 
       it "echoes a message to the console and opens the url using Kernel#system" do
-        subject.should_receive(:system).
+        expect(subject).to receive(:system).
           with("echo 'Showing the GIF on your browser'")
         subject.search
       end
