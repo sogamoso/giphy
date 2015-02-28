@@ -4,7 +4,7 @@
 [![Code Climate](https://codeclimate.com/github/sebasoga/giphy.png)](https://codeclimate.com/github/sebasoga/giphy)
 
 Because GIFs make life fun! Use [Giphy API](http://api.giphy.com) from your Ruby programs and
-command line. Check out [Giphy Labs](http://labs.giphy.com/) for inspiration. 
+command line. Check out [Giphy Labs](http://labs.giphy.com/) for inspiration.
 
 ![](http://media.giphy.com/media/GuDQNjS0qJHpe/200.gif)
 
@@ -39,9 +39,9 @@ to specific values the default values for the beta period will be used. Check
 
 That's it, you're ready to have fun!
 
-#### Recent
+#### Trending
 ````ruby
-Giphy.recent(tag: 'cats', limit: 5)
+Giphy.trending(limit: 5)
 ````
 
 #### Translate
