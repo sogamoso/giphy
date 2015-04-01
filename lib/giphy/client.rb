@@ -1,7 +1,7 @@
 module Giphy
   class Client
-    def recent(options={})
-      get('/recent', options)
+    def trending(options={})
+      get('/trending', options)
     end
 
     def translate(word)
@@ -15,7 +15,7 @@ module Giphy
 
     def flag(id)
       post("/#{id}/flagged")
-     end
+    end
 
     def flagged
       get('/flagged')

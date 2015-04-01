@@ -13,13 +13,13 @@ describe Giphy::Client do
 
   subject { Giphy::Client.new }
 
-  describe "#recent" do
-    it "does a GET on the 'recent' endpoint" do
+  describe "#trending" do
+    it "does a GET on the 'trending' endpoint" do
       allow(Giphy::Request).
         to receive(:get).
-        with('/recent', options: 'options').
+        with('/trending', options: 'options').
         and_return(api_response)
-      expect(subject.recent(options: 'options')).to eq response
+      expect(subject.trending(options: 'options')).to eq response
     end
   end
 
