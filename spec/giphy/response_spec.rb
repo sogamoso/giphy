@@ -36,5 +36,14 @@ describe Giphy::Response do
         expect{ subject.data }.to raise_error Giphy::Errors::API
       end
     end
+
+    context "when response is empty" do
+      let(:hash) { nil }
+
+      it "raises an error and sets its message" do
+        expect{ subject.data }.to raise_error Giphy::Errors::Unexpected
+      end
+    end
+
   end
 end
