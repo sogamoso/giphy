@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 2.14"
   spec.add_development_dependency "rspec-its", "~> 1.0"
   spec.add_dependency "faraday", "~> 0.9"
-  spec.add_dependency "faraday_middleware"
+  spec.add_dependency "faraday_middleware", "~> 0.9"
   spec.add_dependency "faraday_middleware-parse_oj", "~> 0.3"
   spec.add_dependency "launchy", "~> 2.4"
 end
