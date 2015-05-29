@@ -1,4 +1,5 @@
 require 'faraday'
+require 'faraday_middleware'
 require 'faraday_middleware/parse_oj'
 
 module Giphy
@@ -27,9 +28,11 @@ module Giphy
 
     def connection
       Faraday.new(url: URL) do |connection|
-        connection.request  :url_encoded
+        connection.use FaradayMiddleware::FollowRedirects
+        connection.use Faraday::Response::RaiseError
+        connection.request :url_encoded
         connection.response :oj
-        connection.adapter  Faraday.default_adapter
+        connection.adapter Faraday.default_adapter
       end
     end
 
