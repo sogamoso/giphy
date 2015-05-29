@@ -9,6 +9,7 @@ module Giphy
     end
 
     def data
+      raise Giphy::Errors::Unexpected unless response.body
       response.body['data'] || raise(Giphy::Errors::API.new(error))
     end
 
