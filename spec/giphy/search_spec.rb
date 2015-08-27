@@ -12,11 +12,11 @@ describe Giphy::Search do
 
   before { allow(Giphy::Client).to receive(:new).and_return(client) }
 
-  describe "#recent" do
+  describe "#trending" do
     it "returns a batch of Gifs from the client result" do
-      allow(client).to receive(:recent).with(options).and_return(client_result)
+      allow(client).to receive(:trending).with(options).and_return(client_result)
       allow(Giphy::Gif).to receive(:build_batch_from).with(client_result).and_return(response)
-      expect(subject.recent(options)).to eq response
+      expect(subject.trending(options)).to eq response
     end
   end
 

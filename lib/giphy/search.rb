@@ -1,7 +1,7 @@
 module Giphy
   module Search
-    def recent(options={})
-      result = client.recent(options)
+    def trending(options={})
+      result = client.trending(options)
       gif.build_batch_from(result)
     end
 
