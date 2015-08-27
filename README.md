@@ -119,6 +119,7 @@ implementations:
 * Ruby 1.9
 * Ruby 2.0
 * Ruby 2.1
+* Ruby 2.2
 
 ## Contributing
 
