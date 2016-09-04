@@ -52,23 +52,6 @@ describe Giphy::Search do
     end
   end
 
-  describe "#favorite" do
-    it "returns a new FavoriteGifs from the client result" do
-      allow(client).to receive(:favorite).with('wdsf34df').and_return(client_result)
-      allow(Giphy::FavoriteGif).to receive(:new).with(client_result).and_return(response)
-      expect(subject.favorite('wdsf34df')).to eq response
-    end
-  end
-
-  describe "#favorites" do
-    it "returns a batch of FavoriteGifs from the client result" do
-      username = 'absurdnoise'
-      allow(client).to receive(:favorites).with(username, options).and_return(client_result)
-      allow(Giphy::FavoriteGif).to receive(:build_batch_from).with(client_result).and_return(response)
-      expect(subject.favorites(username, options)).to eq response
-    end
-  end
-
   describe "#screensaver" do
     it "returns a new Gif from the client result" do
       allow(client).to receive(:screensaver).with('tag').and_return(client_result)
