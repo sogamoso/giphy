@@ -90,16 +90,6 @@ For getting random gifs with a specific tag:
 Giphy.random('american psycho')
 ````
 
-#### Artists
-````ruby
-Giphy.artists
-````
-
-#### GIFs by artist
-````ruby
-Giphy.gif_by_artist('89a', {limit: 5, offset: 10})
-````
-
 #### GIFs by ID
 ````ruby
 Giphy.gif_by_id('feqkVgjJpYtjy', '12HoHdqnDxz5NS', '7rzbxdu0ZEXLy')

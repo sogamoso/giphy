@@ -95,25 +95,6 @@ describe Giphy::Search do
     end
   end
 
-  describe "#artists" do
-    it "returns a batch of Artists from the client result" do
-      allow(client).to receive(:artists).and_return(client_result)
-      allow(Giphy::Artist).to receive(:build_batch_from).with(client_result).and_return(response)
-      expect(subject.artists).to eq response
-    end
-  end
-
-  describe "#gif_by_artist" do
-    it "returns a batch of Gifs from the client result" do
-      allow(client).
-        to receive(:artists).
-        with(username: 'artist_name', option: 'option').
-        and_return(client_result)
-      allow(Giphy::Gif).to receive(:build_batch_from).with(client_result).and_return(response)
-      expect(subject.gif_by_artist('artist_name', options)).to eq response
-    end
-  end
-
   describe "#gif_by_id" do
     it "returns a batch of Gifs from the client result" do
       gif_by_id = double

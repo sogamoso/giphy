@@ -127,16 +127,6 @@ describe Giphy::Client do
     end
   end
 
-  describe "#artists" do
-    it "does a GET on the 'artists' endpoint" do
-      allow(Giphy::Request).
-        to receive(:get).
-        with('/artists', {}).
-        and_return(api_response)
-      expect(subject.artists).to eq response
-    end
-  end
-
   describe "#gif" do
     it "does a GET on the 'gif_by_id' endpoint" do
       allow(Giphy::Request).
