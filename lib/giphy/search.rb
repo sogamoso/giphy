@@ -15,16 +15,6 @@ module Giphy
       gif.build_batch_from(result)
     end
 
-    def flag(id)
-      result = client.flag(id)
-      flagged_gif.new(result)
-    end
-
-    def flagged
-      result = client.flagged
-      flagged_gif.build_batch_from(result)
-    end
-
     def favorite(id)
       result = client.favorite(id)
       favorite_gif.new(result)
@@ -68,10 +58,6 @@ module Giphy
 
     def gif
       Giphy::Gif
-    end
-
-    def flagged_gif
-      Giphy::FlaggedGif
     end
 
     def favorite_gif
