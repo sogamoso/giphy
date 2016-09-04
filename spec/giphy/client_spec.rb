@@ -138,7 +138,7 @@ describe Giphy::Client do
   end
 
   describe "#gifs" do
-    it "does a GET on the 'artists' endpoint" do
+    it "does a GET on the base endpoint" do
       allow(Giphy::Request).
         to receive(:get).
         with('', {ids: '12HoHdqnDxz5NS,dc6zaTOxFJmzC'}).
