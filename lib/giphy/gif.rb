@@ -12,6 +12,10 @@ module Giphy
       hash.fetch('id')
     end
 
+    def tags
+      hash.fetch('tags')
+    end
+
     def url
       URI(hash.fetch('url', ''))
     end
