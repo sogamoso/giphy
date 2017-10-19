@@ -54,16 +54,6 @@ Giphy.translate('geek')
 Giphy.search('funny cat', {limit: 50, offset: 25})
 ````
 
-#### Flagged
-Write
-````ruby
-Giphy.flag('m5QHf0caAwgMw')
-````
-Read
-````ruby
-Giphy.flagged
-````
-
 #### Favorites
 Write
 ````ruby

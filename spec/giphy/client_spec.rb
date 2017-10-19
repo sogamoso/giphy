@@ -43,26 +43,6 @@ describe Giphy::Client do
     end
   end
 
-  describe "#flag" do
-    it "does a POST on the 'flagged' endpoint" do
-      allow(Giphy::Request).
-        to receive(:post).
-        with('/12HoHdqnDxz5NS/flagged', {}).
-        and_return(api_response)
-      expect(subject.flag('12HoHdqnDxz5NS')).to eq response
-    end
-  end
-
-  describe "#flagged" do
-    it "does a GET on the 'flagged' endpoint" do
-      allow(Giphy::Request).
-        to receive(:get).
-        with('/flagged', {}).
-        and_return(api_response)
-      expect(subject.flagged).to eq response
-    end
-  end
-
   describe "#favorite" do
     it "does a POST on the 'favorites' endpoint" do
       allow(Giphy::Request).

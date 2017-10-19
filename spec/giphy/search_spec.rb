@@ -36,22 +36,6 @@ describe Giphy::Search do
     end
   end
 
-  describe "#flag" do
-    it "returns a new FlaggedGif from the client result" do
-      allow(client).to receive(:flag).with('wdsf34df').and_return(client_result)
-      allow(Giphy::FlaggedGif).to receive(:new).with(client_result).and_return(response)
-      expect(subject.flag('wdsf34df')).to eq response
-    end
-  end
-
-  describe "#flagged" do
-    it "returns a batch of FlaggedGifs from the client result" do
-      allow(client).to receive(:flagged).and_return(client_result)
-      allow(Giphy::FlaggedGif).to receive(:build_batch_from).with(client_result).and_return(response)
-      expect(subject.flagged).to eq response
-    end
-  end
-
   describe "#favorite" do
     it "returns a new FavoriteGifs from the client result" do
       allow(client).to receive(:favorite).with('wdsf34df').and_return(client_result)
