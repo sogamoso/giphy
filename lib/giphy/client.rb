@@ -21,15 +21,6 @@ module Giphy
       get('/flagged')
     end
 
-    def favorite(id)
-      post("/#{id}/favorites")
-    end
-
-    def favorites(username='', options={})
-      options_hash = {username: username}.merge(options)
-      get('/favorites', options_hash)
-    end
-
     def screensaver(tag)
       get('/screensaver', tag: tag)
     end

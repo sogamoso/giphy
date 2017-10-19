@@ -25,16 +25,6 @@ module Giphy
       flagged_gif.build_batch_from(result)
     end
 
-    def favorite(id)
-      result = client.favorite(id)
-      favorite_gif.new(result)
-    end
-
-    def favorites(username, options)
-      result = client.favorites(username, options)
-      favorite_gif.build_batch_from(result)
-    end
-
     def screensaver(tag)
       result = client.screensaver(tag)
       gif.new(result)
@@ -61,10 +51,6 @@ module Giphy
 
     def flagged_gif
       Giphy::FlaggedGif
-    end
-
-    def favorite_gif
-      Giphy::FavoriteGif
     end
 
     def random_gif

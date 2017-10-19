@@ -63,39 +63,6 @@ describe Giphy::Client do
     end
   end
 
-  describe "#favorite" do
-    it "does a POST on the 'favorites' endpoint" do
-      allow(Giphy::Request).
-        to receive(:post).
-        with('/12HoHdqnDxz5NS/favorites', {}).
-        and_return(api_response)
-      expect(subject.favorite('12HoHdqnDxz5NS')).to eq response
-    end
-  end
-
-  describe "#favorites" do
-    context "when no username is passed to it" do
-      it "does a GET on the 'favorites' endpoint with no username" do
-        allow(Giphy::Request).
-          to receive(:get).
-          with('/favorites', {username: ''}).
-          and_return(api_response)
-        expect(subject.favorites).to eq response
-      end
-    end
-
-    context "when a username is passed as an argument" do
-      it "does a GET on the 'favorites' endpoint with the username" do
-        username = 'absurdnoise'
-        allow(Giphy::Request).
-          to receive(:get).
-          with('/favorites', {username: username}).
-          and_return(api_response)
-        expect(subject.favorites(username)).to eq response
-      end
-    end
-  end
-
   describe "#screensaver" do
     it "does a GET on the 'screensaver' endpoint" do
       allow(Giphy::Request).
