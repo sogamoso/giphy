@@ -45,17 +45,6 @@ module Giphy
       random_gif.new(result)
     end
 
-    def artists
-      result = client.artists
-      artist.build_batch_from(result)
-    end
-
-    def gif_by_artist(username, options={})
-      options_hash = {username: username}.merge(options)
-      result = client.artists(options_hash)
-      gif.build_batch_from(result)
-    end
-
     def gif_by_id(*ids)
       GifByID.new.get(ids)
     end
@@ -80,10 +69,6 @@ module Giphy
 
     def random_gif
       Giphy::RandomGif
-    end
-
-    def artist
-      Giphy::Artist
     end
   end
 end

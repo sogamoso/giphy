@@ -38,10 +38,6 @@ module Giphy
       get('/random', { tag: tag })
     end
 
-    def artists(options={})
-      get('/artists', options)
-    end
-
     def gif(id)
       get("/#{id}")
     end
