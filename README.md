@@ -54,16 +54,6 @@ Giphy.translate('geek')
 Giphy.search('funny cat', {limit: 50, offset: 25})
 ````
 
-#### Favorites
-Write
-````ruby
-Giphy.favorite('12HoHdqnDxz5NS')
-````
-Read
-````ruby
-Giphy.favorites('absurdnoise', {limit: 50, offset: 25})
-````
-
 #### Screensaver
 ````ruby
 Giphy.screensaver('surprise')
